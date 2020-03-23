@@ -1,11 +1,7 @@
 import React from "react";
+import posterFallback from "../../../Helpers/posterFallback";
 
 function Movie({ movieItem, handleAddMovieToFavList }) {
-  const posterFallback = e => {
-    e.target.onerror = null;
-    e.target.src = "https://via.placeholder.com/300x450";
-  };
-
   const addMovieToFavList = () => {
     handleAddMovieToFavList(movieItem);
   };
