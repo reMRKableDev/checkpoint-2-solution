@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Home from "./Home/Home";
 import RandomMovie from "./RandomMovie/RandomMovie";
-import { Switch, Route } from "react-router-dom";
+
+import handleFetchMovies from "./Helpers/handleFetchMovies";
+import isMovieDuplicate from "./Helpers/isMovieDuplicate";
+import filteredGenre from "./Helpers/filteredGenre";
 
 class App extends Component {
   state = {
@@ -14,7 +18,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.handleFetchMovies()
+    handleFetchMovies()
       .then(results =>
         this.setState({
           moviesList: results.movies,
@@ -24,20 +28,8 @@ class App extends Component {
       .catch(error => `Something went wrong with API call: ${error}`);
   }
 
-  handleFetchMovies = async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json"
-    );
-    const data = await response.json();
-    return data;
-  };
-
   handleAddMovieToFavList = newFavMovie => {
-    const isDuplicateMovie = !this.state.favList.find(
-      duplicate => duplicate === newFavMovie
-    );
-
-    !isDuplicateMovie
+    !isMovieDuplicate(newFavMovie, this.state)
       ? alert("Movie has already been added to Favorites List")
       : this.setState({ favList: [...this.state.favList, newFavMovie] });
   };
@@ -60,13 +52,10 @@ class App extends Component {
   };
 
   handleGenreFilter = genre => {
-    this.handleFetchMovies()
+    handleFetchMovies()
       .then(results => {
-        const filteredGenre = results.movies.filter(movie =>
-          movie.genres.includes(genre) ? movie : null
-        );
         this.setState({
-          moviesList: filteredGenre.filter(Boolean)
+          moviesList: filteredGenre(results, genre).filter(Boolean)
         });
       })
       .catch(error => `Something went wrong with API call: ${error}`);
