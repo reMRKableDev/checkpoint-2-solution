@@ -1,18 +1,7 @@
 # checkpoint-2-react-popcorn
-Popcorn Time
+Solution Component Tree
 
-```
-# clone
-git clone <REPO-URL>
-
-# change directory
-cd <REPO-DIRECTORY>
-
-# create your own branch
-git checkout -b city_lastName_firstName
-Try to commit after each exercise with an explicit message. Don't forget to push.
-```
-
+![component-tree](./component-tree.png)
 ## React
 ### Setup
 
