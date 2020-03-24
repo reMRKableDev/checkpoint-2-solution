@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import MovieList from "./Movies-Components/MovieList/MovieList";
-import Favorites from "./Favorites-Components/Favorites/Favorites";
+import FavList from "./Favorites-Components/FavList/FavList";
 import GenresList from "./Genre-Components/GenresList/GenresList";
 
 function Home({
@@ -13,16 +14,31 @@ function Home({
   handleRandomMovie,
   handleGenreFilter
 }) {
+  const pickRandomMovie = () => {
+    handleRandomMovie();
+  };
+
   const filterGenre = e => handleGenreFilter(e.target.value);
+
+  const returnFavList = () => {
+    return favList.length > 0 ? (
+      <FavList
+        favList={favList}
+        handleRemoveMovieFromFavList={handleRemoveMovieFromFavList}
+      />
+    ) : (
+      <p>Favorites List is currently empty!</p>
+    );
+  };
 
   return (
     <div>
       <section>
-        <Favorites
-          favList={favList}
-          handleRemoveMovieFromFavList={handleRemoveMovieFromFavList}
-          handleRandomMovie={handleRandomMovie}
-        />
+        <Link onClick={pickRandomMovie} to="/randomMovie">
+          Pick Random
+        </Link>
+        <h1>Favorites</h1>
+        {returnFavList()}
       </section>
       <section>
         <label htmlFor="genres">Movie Genres</label> <br />

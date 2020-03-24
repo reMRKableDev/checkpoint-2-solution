@@ -1,9 +1,9 @@
 import React from "react";
-import Favs from "../Favs/Favs";
+import Fav from "../Fav/Fav";
 
 function FavList({ favList, handleRemoveMovieFromFavList }) {
   return favList.map(fav => (
-    <Favs
+    <Fav
       key={fav.id}
       favItem={fav}
       handleRemoveMovieFromFavList={handleRemoveMovieFromFavList}

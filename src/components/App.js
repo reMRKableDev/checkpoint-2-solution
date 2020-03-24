@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 
 import Home from "./Home/Home";
@@ -64,30 +64,34 @@ class App extends Component {
   render() {
     return (
       <section className="App">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <Home
-                {...props}
-                moviesList={this.state.moviesList}
-                favList={this.state.favList}
-                genresList={this.state.genresList}
-                handleAddMovieToFavList={this.handleAddMovieToFavList}
-                handleRemoveMovieFromFavList={this.handleRemoveMovieFromFavList}
-                handleRandomMovie={this.handleRandomMovie}
-                handleGenreFilter={this.handleGenreFilter}
-              />
-            )}
-          />
-          <Route
-            path="/randomMovie"
-            render={props => (
-              <RandomMovie {...props} randomMovie={this.state.randomMovie} />
-            )}
-          />
-        </Switch>
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Home
+                  {...props}
+                  moviesList={this.state.moviesList}
+                  favList={this.state.favList}
+                  genresList={this.state.genresList}
+                  handleAddMovieToFavList={this.handleAddMovieToFavList}
+                  handleRemoveMovieFromFavList={
+                    this.handleRemoveMovieFromFavList
+                  }
+                  handleRandomMovie={this.handleRandomMovie}
+                  handleGenreFilter={this.handleGenreFilter}
+                />
+              )}
+            />
+            <Route
+              path="/randomMovie"
+              render={props => (
+                <RandomMovie {...props} randomMovie={this.state.randomMovie} />
+              )}
+            />
+          </Switch>
+        </Router>
       </section>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import posterFallback from "../../../Helpers/posterFallback";
 
-function Favs({ favItem, handleRemoveMovieFromFavList }) {
+function Fav({ favItem, handleRemoveMovieFromFavList }) {
   const removeMovieFromFavList = () => {
     handleRemoveMovieFromFavList(favItem);
   };
@@ -59,4 +59,4 @@ function Favs({ favItem, handleRemoveMovieFromFavList }) {
   );
 }
 
-export default Favs;
+export default Fav;
