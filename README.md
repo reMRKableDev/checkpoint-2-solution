@@ -1,7 +1,7 @@
 # checkpoint-2-react-popcorn
 Solution Component Tree
 
-![component-tree](./component-tree.png)
+![component-tree](./component-tree.PNG)
 ## React
 ### Setup
 
