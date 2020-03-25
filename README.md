@@ -1,8 +1,5 @@
 # checkpoint-2-react-popcorn
-Solution Component Tree
 
-![component-tree](./component-tree.PNG)
-## React
 ### Setup
 
 - Create a new React app
@@ -26,5 +23,3 @@ Solution Component Tree
 ### Optional
 
 - Add a dropdown to filter movies by genres. Don't hardcode the genres, instead iterate over genres from your JSON file.
-
-```Feel free to make it look awesome with your amazing css skills!```
